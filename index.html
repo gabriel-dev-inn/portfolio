@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel Amorim — Suporte, Sistemas & Pessoas</title>
+  <meta name="description" content="Gabriel Amorim — Suporte N1 em TOTVS Protheus e sistemas web, graduando em Psicologia (Unisul)." />
+  <meta name="theme-color" content="#05060a" />
+
+  <!-- Open Graph (preview ao compartilhar o link) -->
+  <meta property="og:title" content="Gabriel Amorim — Suporte, Sistemas & Pessoas" />
+  <meta property="og:description" content="Suporte N1 · TOTVS Protheus · Sistemas Web · Graduando em Psicologia" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2305060a'/><text x='50%' y='56%' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,Arial' font-size='28' fill='%237cf7e4'>GA</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <div class="loader__label mono">inicializando sistema</div>
+      <div class="loader__count" id="loaderCount">0</div>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+    </div>
+  </div>
+
+  <!-- Cursor customizado -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- Cena 3D -->
+  <canvas id="webgl" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" data-magnetic>GA<span>.</span></a>
+    <nav class="nav__links">
+      <a href="#sobre" data-scramble>Sobre</a>
+      <a href="#pilares" data-scramble>Atuação</a>
+      <a href="#metodo" data-scramble>Método</a>
+      <a href="#trajetoria" data-scramble>Trajetória</a>
+      <a href="#contato" data-scramble>Contato</a>
+    </nav>
+    <div class="nav__status mono"><i></i> online</div>
+    <button class="nav__burger" id="burger" aria-label="Abrir menu"><span></span><span></span></button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#sobre">Sobre</a>
+    <a href="#pilares">Atuação</a>
+    <a href="#metodo">Método</a>
+    <a href="#trajetoria">Trajetória</a>
+    <a href="#contato">Contato</a>
+  </div>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hud hud--tl mono">
+        <div>// sys.status <b class="ok">OPERACIONAL</b></div>
+        <div>// uptime <b id="uptime">00:00:00</b></div>
+      </div>
+      <div class="hud hud--tr mono">
+        <div>Tubarão · SC · -28.47, -49.01</div>
+        <div id="clock">--:--</div>
+      </div>
+
+      <div class="hero__content">
+        <p class="eyebrow mono reveal-hero">Suporte N1 &nbsp;·&nbsp; TOTVS Protheus &nbsp;·&nbsp; Sistemas Web &nbsp;·&nbsp; Graduando em Psicologia</p>
+        <h1 class="hero__title">
+          <span class="line"><span class="split">Gabriel</span></span>
+          <span class="line"><span class="split outline">Amorim</span></span>
+        </h1>
+        <p class="hero__sub reveal-hero">
+          Eu resolvo problemas de sistemas <em>e</em> entendo as pessoas por trás deles.
+        </p>
+        <div class="hero__ctas reveal-hero">
+          <a href="#contato" class="btn btn--primary" data-magnetic><span>Vamos conversar</span></a>
+          <a href="#sobre" class="btn btn--ghost" data-magnetic><span>Conhecer minha história</span></a>
+        </div>
+      </div>
+
+      <div class="hero__scroll mono">
+        <span>scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>TOTVS Protheus</span><i>✦</i><span>Service Desk</span><i>✦</i><span>SIGAFAT</span><i>✦</i><span>SIGAFIN</span><i>✦</i><span>SIGAFIS</span><i>✦</i><span>SIGAGPE</span><i>✦</i><span>Sistemas Web</span><i>✦</i><span>SQL</span><i>✦</i><span>Power BI</span><i>✦</i><span>Psicologia</span><i>✦</i><span>Escuta Ativa</span><i>✦</i>
+        <span>TOTVS Protheus</span><i>✦</i><span>Service Desk</span><i>✦</i><span>SIGAFAT</span><i>✦</i><span>SIGAFIN</span><i>✦</i><span>SIGAFIS</span><i>✦</i><span>SIGAGPE</span><i>✦</i><span>Sistemas Web</span><i>✦</i><span>SQL</span><i>✦</i><span>Power BI</span><i>✦</i><span>Psicologia</span><i>✦</i><span>Escuta Ativa</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ============ SOBRE ============ -->
+    <section class="section about" id="sobre">
+      <div class="section__tag mono">01 — Sobre</div>
+      <div class="about__grid">
+        <div class="about__text">
+          <h2 class="h2 reveal">Entre o <span class="grad">código</span> e o <span class="grad grad--alt">comportamento</span>.</h2>
+          <p class="reveal">
+            Comecei como <strong>jovem aprendiz</strong> na KFG Distribuidora, empacotando pedidos.
+            Em três anos passei pelo escritório e pelo setor Comercial, sempre usando os sistemas no dia a dia.
+            Hoje estou do outro lado: sou <strong>Suporte N1</strong> na <strong>InnSpire.dev</strong> e
+            dou suporte a esses mesmos sistemas.
+          </p>
+          <p class="reveal">
+            Atendo as empresas do Grupo KFG no <strong>TOTVS Protheus</strong> e nos <strong>sistemas web</strong>.
+            Faço o diagnóstico, oriento o usuário e escalo para o time certo, sempre com contexto claro.
+            Como já fui usuário, sei como é ficar travado com um prazo pela frente.
+          </p>
+          <p class="reveal">
+            Também sou graduando em <strong>Psicologia</strong> na Unisul. Isso mudou meu jeito de atender.
+            Por trás de cada chamado tem alguém com prazo, pressão e expectativa.
+            Entender a pessoa ajuda a resolver o problema mais rápido e deixa uma experiência melhor.
+          </p>
+          <div class="about__chips reveal">
+            <span>Empatia técnica</span><span>Comunicação clara</span><span>Diagnóstico rápido</span><span>Documentação</span>
+          </div>
+        </div>
+
+        <div class="terminal reveal" data-tilt>
+          <div class="terminal__bar">
+            <i></i><i></i><i></i>
+            <span class="mono">gabriel@suporte: ~</span>
+          </div>
+          <pre class="terminal__body mono" id="terminal"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PILARES ============ -->
+    <section class="section pillars" id="pilares">
+      <div class="section__tag mono">02 — Atuação</div>
+      <h2 class="h2 reveal">Quatro frentes, <span class="grad">uma missão</span>:<br/>fazer tudo funcionar, para todos.</h2>
+
+      <div class="pillars__grid">
+        <article class="card reveal" data-tilt>
+          <div class="card__glow"></div>
+          <div class="card__num mono">/01</div>
+          <div class="card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 26v-4a14 14 0 0 1 28 0v4"/><rect x="6" y="26" width="8" height="12" rx="3"/><rect x="34" y="26" width="8" height="12" rx="3"/><path d="M38 38c0 4-5 5-10 5h-3"/></svg>
+          </div>
+          <h3>Suporte N1</h3>
+          <p>Atendimento de primeiro nível: triagem, diagnóstico inicial e resolução ágil. Quando precisa escalar, o chamado segue bem documentado.</p>
+          <ul class="mono"><li>Triagem</li><li>SLA</li><li>Service Desk</li></ul>
+        </article>
+
+        <article class="card reveal" data-tilt>
+          <div class="card__glow"></div>
+          <div class="card__num mono">/02</div>
+          <div class="card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="24" cy="11" rx="15" ry="5"/><path d="M9 11v13c0 2.8 6.7 5 15 5s15-2.2 15-5V11"/><path d="M9 24v13c0 2.8 6.7 5 15 5s15-2.2 15-5V24"/></svg>
+          </div>
+          <h3>TOTVS Protheus</h3>
+          <p>Apoio aos usuários do ERP nos processos do dia a dia: faturamento, fiscal, financeiro, crédito, RH, estoque e logística. Também investigo mensagens de erro, parâmetros e acessos.</p>
+          <ul class="mono"><li>SIGAFAT</li><li>SIGAFIS</li><li>SIGAFIN</li><li>SIGAGPE</li><li>SIGAEST</li><li>SIGACOM</li><li>TMS</li><li>GFE</li></ul>
+        </article>
+
+        <article class="card reveal" data-tilt>
+          <div class="card__glow"></div>
+          <div class="card__num mono">/03</div>
+          <div class="card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="8" width="38" height="28" rx="4"/><path d="M5 15h38"/><path d="M19 23l-4 4 4 4M29 23l4 4-4 4"/><path d="M16 42h16"/></svg>
+          </div>
+          <h3>Sistemas Web</h3>
+          <p>Suporte a aplicações web integradas ao ERP. Reproduzo bugs, valido correções e faço a ponte entre o usuário e o time de desenvolvimento.</p>
+          <ul class="mono"><li>Televendas</li><li>Portal de Relatórios</li><li>SAC</li><li>SYS</li><li>SV Mobile</li><li>Portal do Cliente</li></ul>
+        </article>
+
+        <article class="card reveal" data-tilt>
+          <div class="card__glow"></div>
+          <div class="card__num mono">/04</div>
+          <div class="card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M28 42v-7h4a4 4 0 0 0 4-4v-5l4-2-4-6c0-8-6-13-14-13S8 11 8 19c0 4 2 8 5 10v13"/><circle cx="22" cy="19" r="4"/><path d="M22 11v4M22 23v4M14 19h4M26 19h4"/></svg>
+          </div>
+          <h3>Psicologia</h3>
+          <p>Graduando em Psicologia na Unisul. Levo escuta ativa, inteligência emocional e comunicação não-violenta para cada atendimento.</p>
+          <ul class="mono"><li>Escuta ativa</li><li>Comportamento</li><li>Empatia</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ NÚMEROS ============ -->
+    <!-- Números reais do ClickUp (jan–set/2026). Satisfação: estimativa, sem medição formal. -->
+    <section class="stats">
+      <div class="stat reveal"><div class="stat__num"><span data-count="145">0</span>+</div><div class="stat__label mono">chamados resolvidos</div></div>
+      <div class="stat reveal"><div class="stat__num"><span data-count="8">0</span></div><div class="stat__label mono">módulos Protheus</div></div>
+      <div class="stat reveal"><div class="stat__num"><span data-count="10">0</span>+</div><div class="stat__label mono">sistemas web atendidos</div></div>
+      <div class="stat reveal"><div class="stat__num"><span data-count="95">0</span>%</div><div class="stat__label mono">satisfação</div></div>
+    </section>
+
+    <!-- ============ MÉTODO ============ -->
+    <section class="section method" id="metodo">
+      <div class="section__tag mono">03 — Método</div>
+      <h2 class="h2 reveal">Como eu <span class="grad">atendo</span>.</h2>
+      <p class="lead reveal">Um processo que une a lógica do suporte técnico à sensibilidade da psicologia.</p>
+
+      <div class="method__steps">
+        <div class="method__line"><span id="methodProgress"></span></div>
+
+        <div class="step reveal">
+          <div class="step__dot"></div>
+          <div class="step__k mono">01 · Escutar</div>
+          <h3>Acolher antes de resolver</h3>
+          <p>Deixo a pessoa explicar tudo sem interromper. Metade do diagnóstico está no que o usuário sente e descreve.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step__dot"></div>
+          <div class="step__k mono">02 · Diagnosticar</div>
+          <h3>Reproduzir e isolar</h3>
+          <p>Reproduzo o erro, reviso parâmetros, logs e dados, e separo o que é usuário, processo ou sistema.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step__dot"></div>
+          <div class="step__k mono">03 · Resolver</div>
+          <h3>Resolver ou escalar bem</h3>
+          <p>Resolvo no N1 quando dá. Quando não dá, escalo com evidências, prints e passo a passo, e ninguém precisa perguntar de novo.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step__dot"></div>
+          <div class="step__k mono">04 · Documentar</div>
+          <h3>Transformar em conhecimento</h3>
+          <p>Cada solução vira registro. Assim o próximo atendimento é mais rápido e o usuário ganha autonomia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRAJETÓRIA ============ -->
+    <section class="section journey" id="trajetoria">
+      <div class="section__tag mono">04 — Trajetória</div>
+      <h2 class="h2 reveal">Linha do <span class="grad">tempo</span>.</h2>
+
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-item__date mono">jan 2026 — atual</div>
+          <div class="tl-item__body">
+            <h3>Suporte ao Cliente · N1</h3>
+            <div class="tl-item__org mono">InnSpire.dev · Criciúma, SC</div>
+            <p>Suporte às empresas do Grupo KFG (KFG Distribuidora, ADA Nutracêuticos e Rodo K Transportes) no TOTVS Protheus e nos sistemas web.
+              Faço triagem, diagnóstico, liberação de acessos e escalonamento para o time de desenvolvimento.
+              Foram mais de 145 chamados resolvidos em 8 módulos do ERP.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-item__date mono">2026 — 2031</div>
+          <div class="tl-item__body">
+            <h3>Graduação em Psicologia</h3>
+            <div class="tl-item__org mono">Unisul · Universidade do Sul de Santa Catarina · em andamento</div>
+            <p>Estudo do comportamento humano, processos cognitivos e relações interpessoais, aplicados no trabalho e na vida.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-item__date mono">dez 2024 — dez 2025</div>
+          <div class="tl-item__body">
+            <h3>Auxiliar Administrativo · Comercial</h3>
+            <div class="tl-item__org mono">KFG Distribuidora · Tubarão, SC</div>
+            <p>Fui promovido de Jovem Aprendiz para o setor Comercial. Lá passei a usar o ERP e os portais todos os dias, trabalhando com Excel, Power BI e muito atendimento a pessoas.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-item__date mono">jan 2024 — dez 2024</div>
+          <div class="tl-item__body">
+            <h3>Jovem Aprendiz · Auxiliar de Escritório</h3>
+            <div class="tl-item__org mono">KFG Distribuidora · Tubarão, SC</div>
+            <p>Primeiro contato com a rotina administrativa, planilhas, relatórios e sistemas corporativos.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-item__date mono">jan 2023 — dez 2023</div>
+          <div class="tl-item__body">
+            <h3>Jovem Aprendiz · Empacotador</h3>
+            <div class="tl-item__org mono">KFG Distribuidora</div>
+            <p>Onde tudo começou: separação, checkout e embalagem de pedidos. Foi aí que aprendi trabalho em equipe e como a operação funciona na ponta.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section skills">
+      <div class="section__tag mono">05 — Ferramentas</div>
+      <div class="skills__cols">
+        <div class="reveal">
+          <h4 class="mono">// técnico</h4>
+          <div class="chips">
+            <span>TOTVS Protheus</span><span>SmartClient</span><span>SQL</span><span>Git</span><span>Sistemas Web</span><span>Microsoft Excel</span><span>Power BI</span><span>ClickUp</span><span>Windows</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <h4 class="mono">// humano</h4>
+          <div class="chips chips--alt">
+            <span>Escuta ativa</span><span>Comunicação não-violenta</span><span>Inteligência emocional</span><span>Trabalho em equipe</span><span>Didática</span><span>Espanhol</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUOTE ============ -->
+    <section class="quote">
+      <p class="quote__text" id="quoteText">
+        Tecnologia resolve o problema. <span>Empatia resolve a pessoa.</span>
+      </p>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section class="section contact" id="contato">
+      <div class="section__tag mono">06 — Contato</div>
+      <h2 class="contact__title reveal">Vamos <span class="grad">conversar</span>?</h2>
+      <p class="lead reveal">Aberto a oportunidades, trocas de conhecimento e um bom café.</p>
+
+      <!-- Troque aqui quando criar o Gmail dedicado -->
+      <a href="mailto:ga7896295@gmail.com" class="contact__mail reveal" data-magnetic>ga7896295@gmail.com</a>
+
+      <div class="contact__links reveal">
+        <a href="https://www.linkedin.com/in/gabriel-amorim-266b3b31b" target="_blank" rel="noopener" class="pill" data-magnetic>LinkedIn ↗</a>
+        <a href="https://github.com/gabriel-dev-inn" target="_blank" rel="noopener" class="pill" data-magnetic>GitHub ↗</a>
+        <a href="https://wa.me/5548988036126" target="_blank" rel="noopener" class="pill" data-magnetic>WhatsApp ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span>© <span id="year"></span> Gabriel Amorim</span>
+    <span>Feito com Three.js, GSAP e café ☕</span>
+    <a href="#top">voltar ao topo ↑</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
