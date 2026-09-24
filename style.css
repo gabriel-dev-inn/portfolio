@@ -202,23 +202,6 @@ main, footer { position: relative; z-index: 2; }
 }
 @keyframes scrollLine { to { top: 100%; } }
 
-/* ---------- Marquee ---------- */
-.marquee {
-  position: relative; z-index: 2;
-  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-  background: rgba(5,6,10,.6); backdrop-filter: blur(6px);
-  overflow: hidden; padding: 22px 0;
-}
-.marquee__track {
-  display: flex; gap: 36px; width: max-content; align-items: center;
-  animation: marquee 38s linear infinite;
-  font-family: "Space Grotesk"; font-size: clamp(22px, 3vw, 36px); font-weight: 500;
-  white-space: nowrap;
-}
-.marquee__track i { font-style: normal; color: var(--cyan); font-size: .6em; }
-.marquee__track span:nth-of-type(odd) { color: transparent; -webkit-text-stroke: 1px rgba(238,241,248,.55); }
-@keyframes marquee { to { transform: translateX(-50%); } }
-
 /* ---------- Sections ---------- */
 .section { padding: clamp(100px, 14vw, 180px) var(--pad); position: relative; }
 .section__tag {
