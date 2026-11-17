@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gabriel Amorim | Psicologia & Neurociência</title>
+<meta name="description" content="Psicologia Forense, Neurociência, TDAH & AuDHD, Psicologia do Esporte e Psicologia geral — por Gabriel Amorim, estudante de Psicologia.">
+<meta property="og:title" content="Gabriel Amorim | Psicologia & Neurociência">
+<meta property="og:description" content="Forense · Neuro · TDAH · Esporte — Psicologia sem mito.">
+<meta name="theme-color" content="#141012">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bordo:#7A1424; --bordo-vivo:#A51D33; --creme:#F2E8DC; --preto:#141012;
+    --forense:#7A1424; --neuro:#1F5B66; --neurodiv:#5B3A8C; --esporte:#C2611F; --geral:#A8823F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--preto);color:var(--creme);font-family:Inter,system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 22px 60px;overflow:hidden;
+    background:radial-gradient(110% 70% at 50% 0%, rgba(165,29,51,.55) 0%, rgba(122,20,36,.2) 45%, transparent 75%)}
+  .tape{position:absolute;left:-10%;right:-10%;top:22px;transform:rotate(-3deg);background:var(--bordo-vivo);color:var(--creme);
+    font:600 11px/1 Inter;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;padding:7px 0;opacity:.9}
+  .mono{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;background:var(--bordo);border:2px solid rgba(242,232,220,.35);font:400 42px/1 Anton;margin-bottom:22px}
+  .hero h1{font:400 clamp(46px,12vw,110px)/.92 Anton;text-transform:uppercase}
+  .hero h1 span{color:var(--bordo-vivo)}
+  .tag{font:italic clamp(20px,3vw,28px)/1.3 'Playfair Display',serif;margin-top:14px;opacity:.92}
+  .sub{font-size:14px;opacity:.7;margin-top:8px}
+  .idx{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:28px;max-width:640px}
+  .idx a{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transition:transform .15s}
+  .idx a:hover{transform:translateY(-2px)}
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:12px;background:var(--creme);color:var(--preto);font-weight:600;font-size:14px;transition:transform .15s}
+  .btn.ghost{background:transparent;color:var(--creme);border:1px solid rgba(242,232,220,.3)}
+  .btn:hover{transform:translateY(-2px)}
+  .scroll-hint{position:absolute;bottom:22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;animation:bob 2s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(6px)}}
+
+  /* ---------- NAV LATERAL ---------- */
+  .dots{position:fixed;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:20}
+  .dots a{width:11px;height:11px;border-radius:50%;background:var(--c);border:2px solid rgba(242,232,220,.5);opacity:.55;transition:all .2s}
+  .dots a.on{opacity:1;transform:scale(1.35);border-color:var(--creme)}
+
+  /* ---------- SEÇÕES DE CATEGORIA ---------- */
+  .cat{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;isolation:isolate}
+  .cat .bg{position:absolute;inset:0;z-index:-2}
+  .cat .bg canvas,.cat .bg svg{width:100%;height:100%;display:block}
+  .cat::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:var(--scrim)}
+  .content{position:relative;z-index:1;width:min(1180px,100%);margin:0 auto;padding:90px 28px}
+  .box{max-width:470px}
+  .num{font:400 15px/1 Anton;letter-spacing:.12em;opacity:.7}
+  .kick{display:inline-block;margin:14px 0 12px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:6px 10px;border-radius:6px;background:var(--acc);color:var(--creme)}
+  .cat h2{font:400 clamp(44px,8vw,86px)/.92 Anton;text-transform:uppercase}
+  .cat .quote{font:italic clamp(19px,2.4vw,24px)/1.35 'Playfair Display',serif;margin:16px 0 14px}
+  .cat p.desc{font-size:15px;opacity:.88;max-width:440px}
+  .topics{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 24px}
+  .topics span{font-size:12.5px;font-weight:500;padding:7px 12px;border-radius:999px;background:rgba(242,232,220,.1);border:1px solid rgba(242,232,220,.22);backdrop-filter:blur(4px)}
+  .serie{margin:4px 0 24px;padding:16px 18px;border-left:3px solid var(--bordo-vivo);background:rgba(20,16,18,.55);backdrop-filter:blur(6px);border-radius:0 12px 12px 0}
+  .serie b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:8px}
+  .serie ol{list-style:none;counter-reset:n;display:grid;gap:6px;font-size:14px}
+  .serie li{counter-increment:n;display:flex;gap:10px}
+  .serie li::before{content:"0" counter(n);font:400 15px Anton;opacity:.6}
+  .note{font-size:12px;opacity:.65;margin-top:14px;max-width:420px}
+  .state{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-top:6px;opacity:.85}
+  .state i{width:8px;height:8px;border-radius:50%;background:var(--creme);box-shadow:0 0 12px var(--creme)}
+
+  /* transição: cada seção começa com a cor da anterior e vai se dissolvendo */
+  .fade{position:absolute;left:0;right:0;top:0;height:28vh;z-index:0;pointer-events:none;background:linear-gradient(180deg,var(--top) 0%,transparent 100%)}
+  #forense{--top:#141012} #neuro{--top:#16070b} #tdah{--top:#061518} #esporte{--top:#120a1e} #geral{--top:#5a270b}
+  .sobre{position:relative}
+  .sobre::before{content:"";position:absolute;left:-50vw;right:-50vw;top:0;height:30vh;z-index:-1;background:linear-gradient(180deg,#d9c39a 0%,#141012 100%)}
+
+  /* rótulo 3D da amígdala */
+  .label3d{position:absolute;z-index:1;pointer-events:none;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ff8a9a;white-space:nowrap;
+    padding-left:46px;transform:translate(0,-50%);opacity:0;transition:opacity .4s}
+  .label3d::before{content:"";position:absolute;left:0;top:50%;width:40px;height:1px;background:#ff8a9a}
+
+  #forense{--acc:var(--forense);--scrim:linear-gradient(90deg,rgba(20,6,10,.92) 0%,rgba(20,6,10,.55) 42%,transparent 70%);background:radial-gradient(80% 90% at 75% 50%,#3a0912 0%,#16070b 70%)}
+  #neuro{--acc:var(--neuro);--scrim:linear-gradient(90deg,transparent 30%,rgba(6,22,26,.6) 58%,rgba(6,22,26,.92) 100%);background:radial-gradient(90% 90% at 30% 50%,#0f3a42 0%,#061518 75%)}
+  #tdah{--acc:var(--neurodiv);--scrim:linear-gradient(90deg,rgba(18,10,30,.9) 0%,rgba(18,10,30,.5) 42%,transparent 70%);background:radial-gradient(80% 90% at 70% 50%,#33205a 0%,#120a1e 75%)}
+  #esporte{--acc:#8a3d0c;--scrim:linear-gradient(90deg,rgba(60,22,4,.9) 0%,rgba(60,22,4,.5) 40%,transparent 62%);background:linear-gradient(160deg,#e07a2c 0%,#c2611f 45%,#7a3510 100%)}
+  #geral{--acc:#6b4f1d;--scrim:linear-gradient(90deg,rgba(226,206,168,.97) 0%,rgba(226,206,168,.85) 40%,rgba(226,206,168,0) 62%);background:#d9c39a;color:#1d150c}
+  #geral p.desc,#geral .quote{opacity:1}
+  #geral .note{opacity:.8}
+  #geral .topics span{background:rgba(29,21,12,.06);border-color:rgba(29,21,12,.25)}
+  #neuro .box{margin-left:auto}
+
+  /* ---------- SOBRE / RODAPÉ ---------- */
+  .sobre{max-width:640px;margin:0 auto;padding:90px 24px 30px;text-align:center}
+  .sobre h2{font:400 34px/1 Anton;text-transform:uppercase;margin-bottom:16px}
+  .sobre p{opacity:.85;margin-bottom:12px}
+  .sobre a.u{text-decoration:underline}
+  .sobre h2.ct{margin-top:56px}
+  .sobre .mail{display:inline-block;font:400 clamp(24px,5vw,40px)/1.1 Anton;letter-spacing:.01em;color:var(--creme);border-bottom:3px solid var(--bordo-vivo);padding-bottom:4px;transition:color .2s;word-break:break-all}
+  .sobre .mail:hover{color:#ff8a9a}
+  .links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+  .links a{padding:11px 18px;border-radius:999px;border:1px solid rgba(242,232,220,.25);font-size:14px;font-weight:600;transition:all .2s}
+  .links a:hover{background:var(--bordo);border-color:var(--bordo)}
+  footer{max-width:640px;margin:30px auto 0;padding:26px 24px 40px;border-top:1px solid rgba(242,232,220,.1);text-align:center;font-size:12px;opacity:.6}
+  footer p+p{margin-top:8px}
+
+  @media (max-width:760px){
+    .cat{display:block;min-height:auto}
+    .cat .bg{bottom:auto;height:64vh}
+    .content{padding:54vh 22px 70px}
+    .box,#neuro .box,#esporte .box{margin-left:0;max-width:none}
+    #forense,#neuro,#tdah,#esporte{--scrim:linear-gradient(180deg,transparent 0,transparent 44vh,rgba(10,6,8,.92) 62vh,rgba(10,6,8,.96) 100%)}
+    #esporte{--scrim:linear-gradient(180deg,transparent 0,transparent 44vh,rgba(60,22,4,.9) 62vh,rgba(60,22,4,.95) 100%)}
+    #geral{--scrim:linear-gradient(180deg,transparent 0,transparent 46vh,rgba(217,195,154,.9) 60vh,rgba(217,195,154,.97) 100%)}
+    .dots{right:8px}
+  }
+  @media (prefers-reduced-motion:reduce){.scroll-hint{animation:none}}
+</style>
+</head>
+<body>
+
+<nav class="dots" aria-label="Categorias">
+  <a href="#forense" style="--c:var(--forense)" aria-label="Forense"></a>
+  <a href="#neuro" style="--c:var(--neuro)" aria-label="Neurociência"></a>
+  <a href="#tdah" style="--c:var(--neurodiv)" aria-label="TDAH & AuDHD"></a>
+  <a href="#esporte" style="--c:var(--esporte)" aria-label="Psicologia do Esporte"></a>
+  <a href="#geral" style="--c:var(--geral)" aria-label="Psicologia geral"></a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="tape">Psicologia /// Mente /// Comportamento /// Psicologia /// Mente /// Comportamento /// Psicologia /// Mente /// Comportamento</div>
+  <div class="mono">Ψ</div>
+  <h1>Gabriel <span>Amorim</span></h1>
+  <p class="tag">Psicologia & Neurociência, sem mito.</p>
+  <p class="sub">Estudante de Psicologia · Unisul</p>
+  <div class="idx">
+    <a href="#forense" style="background:var(--forense)">01 Forense</a>
+    <a href="#neuro" style="background:var(--neuro)">02 Neurociência</a>
+    <a href="#tdah" style="background:var(--neurodiv)">03 TDAH & AuDHD</a>
+    <a href="#esporte" style="background:var(--esporte)">04 Esporte</a>
+    <a href="#geral" style="background:var(--geral)">05 Psicologia geral</a>
+  </div>
+  <div class="cta-row">
+    <a class="btn" href="https://www.instagram.com/gabriels.amorim/" target="_blank" rel="noopener">Ver os posts no Instagram →</a>
+    <a class="btn ghost" href="#contato">Contato</a>
+  </div>
+  <div class="scroll-hint">role ↓</div>
+</header>
+
+<!-- ================= 01 FORENSE ================= -->
+<section class="cat" id="forense">
+  <div class="fade"></div>
+  <div class="bg"><canvas id="cv-forense"></canvas></div>
+  <div class="label3d" id="lbl-amig">amígdala</div>
+  <div class="content"><div class="box">
+    <span class="num">01 / 05</span><br>
+    <span class="kick">Psicologia Forense</span>
+    <h2>Onde a mente encontra a lei</h2>
+    <p class="quote">A amígdala ajuda a processar medo e emoção. E quando ela funciona diferente?</p>
+    <p class="desc">Pesquisas associam alterações na amígdala a traços psicopáticos, mas cérebro não é sentença. Aqui eu explico o que a ciência mostra e o que ela não prova.</p>
+    <div class="topics"><span>Psicopatologia & crime</span><span>Neurociência no tribunal</span><span>Perícia psicológica</span><span>Casos em análise</span></div>
+    <div class="serie"><b>Série Psicologia & Justiça</b>
+      <ol><li>Psicologia Forense: onde a mente encontra a lei</li><li>Psicopatologia & Crime</li><li>O cérebro no banco dos réus</li></ol>
+    </div>
+    <a class="btn" href="https://www.instagram.com/gabriels.amorim/" target="_blank" rel="noopener">Ver posts de Forense →</a>
+  </div></div>
+</section>
+
+<!-- ================= 02 NEURO ================= -->
+<section class="cat" id="neuro">
+  <div class="fade"></div>
+  <div class="bg"><canvas id="cv-neuro"></canvas></div>
+  <div class="content"><div class="box">
+    <span class="num">02 / 05</span><br>
+    <span class="kick">Neurociência no dia a dia</span>
+    <h2>Seu cérebro se refaz todo dia</h2>
+    <p class="quote">Cada hábito reforça uma conexão. Cada pausa enfraquece outra.</p>
+    <p class="desc">Neuroplasticidade é o cérebro se reorganizando com o que você vive, repete e aprende. A série traduz isso para a rotina: sono, foco, memória e hábitos.</p>
+    <div class="topics"><span>Neuroplasticidade</span><span>Sono & memória</span><span>Hábitos</span><span>Dopamina sem mito</span></div>
+    <a class="btn" href="https://www.instagram.com/gabriels.amorim/" target="_blank" rel="noopener">Ver posts de Neuro →</a>
+  </div></div>
+</section>
+
+<!-- ================= 03 TDAH ================= -->
+<section class="cat" id="tdah">
+  <div class="fade"></div>
+  <div class="bg"><canvas id="cv-tdah"></canvas></div>
+  <div class="content"><div class="box">
+    <span class="num">03 / 05</span><br>
+    <span class="kick">TDAH & AuDHD</span>
+    <h2>Não é falta de atenção</h2>
+    <p class="quote">É uma atenção que tem dificuldade de se regular: ora se espalha, ora mergulha fundo.</p>
+    <p class="desc">TDAH, autismo e os dois juntos (AuDHD), sem estereótipo: funções executivas, hiperfoco, mascaramento e diagnóstico na vida adulta.</p>
+    <p class="state"><i></i> atenção: <b id="tdah-state">fluxo</b></p>
+    <div class="topics"><span>Hiperfoco</span><span>Funções executivas</span><span>Mascaramento</span><span>Diagnóstico adulto</span></div>
+    <a class="btn" href="https://www.instagram.com/gabriels.amorim/" target="_blank" rel="noopener">Ver posts de TDAH →</a>
+  </div></div>
+</section>
+
+<!-- ================= 04 ESPORTE ================= -->
+<section class="cat" id="esporte">
+  <div class="fade"></div>
+  <div class="bg">
+    <svg id="sv-esporte" viewBox="-250 0 1000 600" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="ballg" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#fff8ec"/><stop offset="1" stop-color="#e9d6b8"/></radialGradient>
+        <pattern id="meshp" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 0L12 12M12 0L0 12" stroke="#fff3e3" stroke-opacity=".35" stroke-width="1"/></pattern>
+      </defs>
+      <!-- quadra -->
+      <g stroke="#fff3e3" stroke-opacity=".2" stroke-width="2" fill="none">
+        <path d="M-300 520 L1000 520"/><path d="M-300 556 L1000 556" stroke-dasharray="14 10"/>
+      </g>
+      <!-- rede (à direita do atleta) -->
+      <g>
+        <rect x="470" y="300" width="8" height="220" fill="#fff3e3" fill-opacity=".55"/>
+        <rect x="478" y="300" width="140" height="80" fill="url(#meshp)"/>
+        <rect x="478" y="300" width="140" height="7" fill="#fff3e3" fill-opacity=".9"/>
+        <rect x="614" y="300" width="6" height="220" fill="#fff3e3" fill-opacity=".35"/>
+      </g>
+      <ellipse class="shadow" cx="290" cy="522" rx="60" ry="8" fill="#3d1704" fill-opacity=".35"/>
+      <!-- atleta (perfil, virado para a rede) -->
+      <g class="athlete" stroke="#1a0c04" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M290 300 L268 368 L226 398" stroke-width="26"/>
+        <path d="M318 206 L270 176 L272 122" stroke-width="18" class="armBack"/>
+        <path d="M318 200 Q 282 246 290 300" stroke-width="40"/>
+        <path d="M290 300 L304 372 L258 414" stroke-width="26"/>
+        <path d="M324 206 L362 182 L384 140" stroke-width="18"/>
+        <circle cx="336" cy="170" r="24" fill="#1a0c04" stroke="none"/>
+        <g class="upper"><path d="M314 206 L290 146" stroke-width="20"/><g class="fore"><path d="M290 146 L254 166" stroke-width="18"/><circle cx="250" cy="168" r="11" fill="#1a0c04" stroke="none"/></g></g>
+      </g>
+      <g class="trail" stroke="#fff3e3" stroke-linecap="round" stroke-width="6">
+        <path d="M350 90 L452 190" stroke-opacity=".35"/><path d="M368 112 L472 220" stroke-opacity=".22"/><path d="M332 78 L412 156" stroke-opacity=".2"/>
+      </g>
+      <g class="ball">
+        <circle r="22" fill="url(#ballg)" stroke="#7a3510" stroke-width="2"/>
+        <path d="M-22 0 Q0 -9 22 0 M-7 -21 Q6 0 -7 21 M8 -21 Q20 0 13 17" stroke="#c2611f" stroke-width="3" fill="none"/>
+      </g>
+      <g class="impact" stroke="#fff8ec" stroke-width="4" stroke-linecap="round">
+        <path d="M328 62 L318 40"/><path d="M350 58 L358 36"/><path d="M310 80 L288 74"/><path d="M366 74 L388 64"/>
+      </g>
+    </svg>
+  </div>
+  <div class="content"><div class="box">
+    <span class="num">04 / 05</span><br>
+    <span class="kick">Psicologia do Esporte</span>
+    <h2>A cabeça ataca antes da mão</h2>
+    <p class="quote">No ponto decisivo, quem ganha é quem consegue manter a cabeça no lance.</p>
+    <p class="desc">Ansiedade competitiva, foco, rotina pré-jogo e coesão de equipe, com o olhar de quem vive a quadra e estuda a mente.</p>
+    <div class="topics"><span>Pressão & ansiedade</span><span>Foco no lance</span><span>Rotina pré-jogo</span><span>Coesão de equipe</span></div>
+    <a class="btn" href="https://www.instagram.com/gabriels.amorim/" target="_blank" rel="noopener">Ver posts de Esporte →</a>
+  </div></div>
+</section>
+
+<!-- ================= 05 GERAL ================= -->
+<section class="cat" id="geral">
+  <div class="fade"></div>
+  <div class="bg"><canvas id="cv-geral"></canvas></div>
+  <div class="content"><div class="box">
+    <span class="num">05 / 05</span><br>
+    <span class="kick">Psicologia geral</span>
+    <h2>O que você vê aqui?</h2>
+    <p class="quote">Uma mancha, duas leituras e muito mito no meio.</p>
+    <p class="desc">Abordagens da Psicologia, saúde mental no trabalho e as frases que a gente usa errado sem perceber. Aqui entra o formato <b>Mito ou fato?</b></p>
+    <div class="topics"><span>Mito ou fato?</span><span>Abordagens</span><span>Burnout</span><span>"Tô bipolar hoje"</span></div>
+    <a class="btn" style="background:#1d150c;color:#f2e8dc" href="https://www.instagram.com/gabriels.amorim/" target="_blank" rel="noopener">Ver posts de Psicologia geral →</a>
+    <p class="note">A mancha é inspirada nas pranchas de Rorschach, um teste projetivo de uso restrito a psicólogos e alvo de debate científico. Aqui ela é só arte.</p>
+  </div></div>
+</section>
+
+<!-- ================= SOBRE / CONTATO ================= -->
+<section class="sobre" id="contato">
+  <h2>Sobre</h2>
+  <p>Sou o Gabriel, estudante de Psicologia na Unisul. Aqui eu transformo o que estudo em conteúdo direto, visual e com base científica.</p>
+  <p>Também trabalho com tecnologia. Se veio por esse lado, o <a class="u" href="https://gabriel-dev-inn.github.io/portfolio/">portfólio profissional</a> está aqui.</p>
+  <h2 class="ct">Contato</h2>
+  <a class="mail" href="mailto:ga7896295@gmail.com">ga7896295@gmail.com</a>
+  <div class="links">
+    <a href="https://www.instagram.com/gabriels.amorim/" target="_blank" rel="noopener">Instagram ↗</a>
+    <a href="https://www.linkedin.com/in/gabriel-amorim-266b3b31b" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://wa.me/5548988036126" target="_blank" rel="noopener">WhatsApp ↗</a>
+    <a href="https://github.com/gabriel-dev-inn" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</section>
+<footer>
+  <p>Conteúdo educativo, produzido por estudante de Psicologia. Não substitui avaliação nem acompanhamento psicológico.</p>
+  <p>Precisa de ajuda agora? CVV: ligue 188 (24h, gratuito).</p>
+  <p>© 2026 Gabriel Amorim</p>
+</footer>
+
+<style>
+  /* animação do ataque (ciclo de 3,2s) */
+  #sv-esporte .athlete{animation:jump 3.2s ease-in-out infinite}
+  #sv-esporte .armBack{opacity:0}
+  #sv-esporte .upper{transform-box:view-box;transform-origin:314px 206px;animation:swingU 3.2s cubic-bezier(.5,0,.2,1) infinite}
+  #sv-esporte .fore{transform-box:view-box;transform-origin:290px 146px;animation:swingF 3.2s cubic-bezier(.5,0,.2,1) infinite}
+  #sv-esporte .shadow{transform-box:view-box;transform-origin:290px 522px;animation:shadow 3.2s ease-in-out infinite}
+  #sv-esporte .ball{animation:ball 3.2s linear infinite}
+  #sv-esporte .trail{opacity:0;animation:trail 3.2s linear infinite}
+  #sv-esporte .impact{opacity:0;transform-box:view-box;transform-origin:338px 70px;animation:impact 3.2s linear infinite}
+  @keyframes jump{0%,100%{transform:translateY(70px)}38%,56%{transform:translateY(-10px)}78%{transform:translateY(64px)}}
+  @keyframes shadow{0%,100%{transform:scale(1);opacity:1}38%,56%{transform:scale(.55);opacity:.45}}
+  @keyframes swingU{0%,30%{transform:rotate(-5deg)}45%{transform:rotate(-15deg)}50%{transform:rotate(30deg)}60%{transform:rotate(130deg)}84%,100%{transform:rotate(-5deg)}}
+  @keyframes swingF{0%,30%{transform:rotate(0deg)}45%{transform:rotate(-10deg)}50%{transform:rotate(97deg)}60%{transform:rotate(60deg)}84%,100%{transform:rotate(0deg)}}
+  @keyframes ball{
+    0%{transform:translate(-260px,260px)}
+    18%{transform:translate(-40px,30px)}
+    32%{transform:translate(180px,10px)}
+    48%{transform:translate(334px,64px)}
+    50%{transform:translate(340px,74px)}
+    61%{transform:translate(980px,540px)}
+    62%,100%{transform:translate(1200px,900px)}
+  }
+  @keyframes trail{0%,49%{opacity:0;transform:translate(0,0)}51%{opacity:1}61%{opacity:0;transform:translate(260px,190px)}100%{opacity:0}}
+  @keyframes impact{0%,47%{opacity:0;transform:scale(.6)}50%{opacity:1;transform:scale(1)}56%,100%{opacity:0;transform:scale(1.5)}}
+  @media (prefers-reduced-motion:reduce){#sv-esporte *{animation:none!important}}
+</style>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = matchMedia('(max-width:760px)').matches;
+
+/* ---------- utilidades ---------- */
+function glowTex(inner='rgba(255,255,255,1)'){
+  const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d');
+  const r=g.createRadialGradient(32,32,0,32,32,32);
+  r.addColorStop(0,inner);r.addColorStop(.35,'rgba(255,255,255,.55)');r.addColorStop(1,'rgba(255,255,255,0)');
+  g.fillStyle=r;g.fillRect(0,0,64,64);const t=new THREE.CanvasTexture(c);return t;
+}
+const GLOW = glowTex();
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+/* visibilidade: só anima a seção que está na tela */
+const visible = new Map();
+const io = new IntersectionObserver(es=>es.forEach(e=>visible.set(e.target.id,e.isIntersecting)),{rootMargin:'100px'});
+document.querySelectorAll('.cat').forEach(s=>io.observe(s));
+
+/* nav lateral */
+const navIO = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){document.querySelectorAll('.dots a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));}
+}),{threshold:.5});
+document.querySelectorAll('.cat').forEach(s=>navIO.observe(s));
+
+function makeRenderer(canvas){
+  const r=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  r.setPixelRatio(Math.min(devicePixelRatio,2));
+  return r;
+}
+function fit(r,cam,canvas){
+  const w=canvas.clientWidth,h=canvas.clientHeight;
+  if(canvas.width!==Math.floor(w*r.getPixelRatio())||canvas.height!==Math.floor(h*r.getPixelRatio())){
+    r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();
+  }
+}
+let mx=0,my=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+
+/* =====================================================
+   01 FORENSE — meio cérebro em pontos, sem a amígdala
+   ===================================================== */
+const forense=(()=>{
+  const canvas=document.getElementById('cv-forense');
+  const r=makeRenderer(canvas);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(38,1,.1,50);
+  const R=rng(7);
+  const group=new THREE.Group();scene.add(group);
+
+  const AMIG=new THREE.Vector3(.42,-.38,.32), AMIG_R=.24;
+  const pos=[],col=[];
+  const cA=new THREE.Color('#f2e8dc'),cB=new THREE.Color('#d0465c'),cC=new THREE.Color('#7a1424');
+
+  // raio da superfície cerebral numa direção
+  function brainR(d){
+    const a=.78,b=.92,c=1.3;
+    let rr=1/Math.sqrt((d.x/a)**2+(d.y/b)**2+(d.z/c)**2);
+    if(d.y<-.25) rr*=1-.25*Math.min(1,(-.25-d.y)*1.2);          // base achatada
+    const t=Math.exp(-((d.x-.75)**2+(d.y+.5)**2*3+(d.z-.25)**2)*3); // lobo temporal
+    rr*=1+.12*t;
+    const gy=Math.sin(9*d.x+3*Math.sin(7*d.z))*Math.sin(8*d.y+2*Math.sin(6*d.x))+.6*Math.sin(13*d.z+5*d.y+2*Math.sin(9*d.x));
+    rr*=1+.045*gy;                                               // giros e sulcos
+    return rr;
+  }
+  function gyri(d){return Math.sin(9*d.x+3*Math.sin(7*d.z))*Math.sin(8*d.y+2*Math.sin(6*d.x))+.6*Math.sin(13*d.z+5*d.y+2*Math.sin(9*d.x));}
+  function push(p,c){ if(p.distanceTo(AMIG)<AMIG_R) return; pos.push(p.x,p.y,p.z); col.push(c.r,c.g,c.b); }
+
+  const N=isMobile?9000:16000;
+  // hemisfério (superfície externa, x>=0)
+  for(let i=0;i<N;i++){
+    const d=new THREE.Vector3(R()*2-1,R()*2-1,R()*2-1);if(d.lengthSq()>1||d.lengthSq()<.01){i--;continue}
+    d.normalize();d.x=Math.abs(d.x);d.normalize();
+    const p=d.clone().multiplyScalar(brainR(d));
+    // fissura lateral (Sylvius): sulco que separa o lobo temporal
+    const fy=-.12+.32*(p.z-.15);
+    if(p.x>.25&&p.z>-.55&&p.z<1.05&&Math.abs(p.y-fy)<.035){continue}
+    const k=Math.max(0,Math.min(1,(p.y+.9)/1.8));
+    const gv=gyri(d);                       // sulcos mais escuros, giros mais claros
+    push(p,cA.clone().lerp(cB,1-k*.8).multiplyScalar(gv>0?1:.45));
+  }
+  // face medial (corte) — mais escura
+  for(let i=0;i<N*.35;i++){
+    const y=R()*2-1,z=R()*2.8-1.4;const d=new THREE.Vector3(0.0001,y,z);const L=d.length();d.normalize();
+    if(L<brainR(d)*.98){push(new THREE.Vector3(R()*.02,y,z),cC.clone().lerp(cA,.15));}
+  }
+  // corpo caloso
+  for(let i=0;i<900;i++){const t=R()*Math.PI;const p=new THREE.Vector3(.02,.18+Math.sin(t)*.32+(R()-.5)*.05,Math.cos(t)*.75);push(p,cA)}
+  // cerebelo
+  for(let i=0;i<N*.15;i++){
+    const d=new THREE.Vector3(R()*2-1,R()*2-1,R()*2-1).normalize();d.x=Math.abs(d.x);
+    const p=new THREE.Vector3(d.x*.45,d.y*.28*(1+.06*Math.sin(d.y*40)),d.z*.38).add(new THREE.Vector3(0,-.62,-.86));
+    push(p,cB.clone().lerp(cA,.4));
+  }
+  // tronco encefálico
+  for(let i=0;i<1400;i++){const a=R()*Math.PI-Math.PI/2,h=R();push(new THREE.Vector3(Math.cos(a)*.13*(1-h*.3)+.02,-.45-h*.85,-.35-h*.15+Math.sin(a)*.13),cB)}
+
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+  g.setAttribute('color',new THREE.Float32BufferAttribute(col,3));
+  const pts=new THREE.Points(g,new THREE.PointsMaterial({size:isMobile?.022:.018,vertexColors:true,transparent:true,opacity:.9,map:GLOW,depthWrite:false,blending:THREE.AdditiveBlending}));
+  group.add(pts);
+
+  // "fantasma" da amígdala: contorno tracejado pulsando
+  const ghostG=new THREE.SphereGeometry(1,18,12);ghostG.scale(.11,.085,.17);
+  const ghost=new THREE.LineSegments(new THREE.WireframeGeometry(ghostG),new THREE.LineBasicMaterial({color:'#ff5a72',transparent:true,opacity:.7}));
+  ghost.position.copy(AMIG);group.add(ghost);
+  const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:GLOW,color:'#ff2d4b',transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+  halo.position.copy(AMIG);halo.scale.setScalar(.6);group.add(halo);
+  // anel de "ausência"
+  const ring=new THREE.Mesh(new THREE.RingGeometry(.2,.21,64),new THREE.MeshBasicMaterial({color:'#ff5a72',transparent:true,opacity:.6,side:THREE.DoubleSide}));
+  ring.position.copy(AMIG);group.add(ring);
+
+  const label=document.getElementById('lbl-amig');
+  const v=new THREE.Vector3();
+  return t=>{
+    fit(r,cam,canvas);
+    const w=canvas.clientWidth,h=canvas.clientHeight;
+    if(isMobile){cam.position.set(5.6,.4,0);cam.lookAt(0,-.3,0);}
+    else{cam.position.set(6.4,.45,1.5);cam.lookAt(0,-.1,1.5);}
+    group.rotation.y=Math.sin(t*.25)*.3+mx*.4;
+    group.rotation.x=my*.15;
+    const s=1+Math.sin(t*3)*.08;ghost.scale.setScalar(s);ghost.rotation.y=t*.4;
+    halo.material.opacity=.35+.3*(.5+.5*Math.sin(t*3));
+    ring.lookAt(cam.position.clone().applyMatrix4(group.matrixWorld.clone().invert()));
+    ring.scale.setScalar(1+.15*Math.sin(t*2));ring.material.opacity=.3+.3*(.5+.5*Math.sin(t*2));
+    r.render(scene,cam);
+    // rótulo HTML acompanhando a amígdala
+    v.copy(AMIG).applyMatrix4(group.matrixWorld).project(cam);
+    label.style.left=((v.x*.5+.5)*w+18)+'px';label.style.top=((-v.y*.5+.5)*h)+'px';label.style.opacity=1;
+  };
+})();
+
+/* =====================================================
+   02 NEURO — fios de neuroplasticidade
+   ===================================================== */
+const neuro=(()=>{
+  const canvas=document.getElementById('cv-neuro');
+  const r=makeRenderer(canvas);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(50,1,.1,60);cam.position.set(0,0,9);
+  const R=rng(21);const group=new THREE.Group();scene.add(group);
+  const NN=isMobile?34:52;
+  const nodes=[];for(let i=0;i<NN;i++)nodes.push(new THREE.Vector3((R()-.5)*11,(R()-.5)*6.5,(R()-.5)*4));
+  // somas
+  const sg=new THREE.BufferGeometry().setFromPoints(nodes);
+  group.add(new THREE.Points(sg,new THREE.PointsMaterial({size:.55,map:GLOW,color:'#9fe7ef',transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})));
+  group.add(new THREE.Points(sg,new THREE.PointsMaterial({size:.22,map:GLOW,color:'#ffffff',transparent:true,depthWrite:false})));
+  // conexões
+  const links=[];const SEG=48;
+  nodes.forEach((a,i)=>{
+    const near=nodes.map((b,j)=>[a.distanceTo(b),j]).filter(x=>x[1]!==i).sort((x,y)=>x[0]-y[0]).slice(0,3);
+    near.forEach(([d,j])=>{
+      if(j<i&&R()<.6)return;
+      const b=nodes[j];const m1=a.clone().lerp(b,.33).add(new THREE.Vector3((R()-.5)*1.2,(R()-.5)*1.2,(R()-.5)*1.2));
+      const m2=a.clone().lerp(b,.66).add(new THREE.Vector3((R()-.5)*1.2,(R()-.5)*1.2,(R()-.5)*1.2));
+      const curve=new THREE.CatmullRomCurve3([a,m1,m2,b]);
+      const geo=new THREE.BufferGeometry().setFromPoints(curve.getPoints(SEG));
+      const mat=new THREE.LineBasicMaterial({color:R()<.5?'#5fc6d3':'#f2e8dc',transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false});
+      const line=new THREE.Line(geo,mat);group.add(line);
+      links.push({line,curve,phase:R(),speed:.05+R()*.08,grow:R()<.45});
+    });
+  });
+  // impulsos nervosos
+  const pulseGeo=new THREE.BufferGeometry();const pp=new Float32Array(links.length*3);
+  pulseGeo.setAttribute('position',new THREE.BufferAttribute(pp,3));
+  const pulses=new THREE.Points(pulseGeo,new THREE.PointsMaterial({size:.4,map:GLOW,color:'#ffffff',transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));
+  group.add(pulses);
+  const sm=(a,b,x)=>{x=Math.max(0,Math.min(1,(x-a)/(b-a)));return x*x*(3-2*x)};
+  return t=>{
+    fit(r,cam,canvas);
+    group.position.x=isMobile?0:-1.6;group.position.y=0;
+    group.rotation.y=Math.sin(t*.12)*.3+mx*.35;group.rotation.x=Math.sin(t*.1)*.12+my*.2;
+    links.forEach((L,k)=>{
+      const c=(t*L.speed+L.phase)%1;
+      if(L.grow){ // conexão que nasce, se fortalece e é podada
+        L.line.geometry.setDrawRange(0,Math.max(2,Math.floor(sm(0,.35,c)*(SEG+1))));
+        L.line.material.opacity=.75*(1-sm(.75,1,c));
+      }else{     // conexão estável que pulsa de força
+        L.line.material.opacity=.18+.45*(.5+.5*Math.sin(t*.8+L.phase*6.28));
+      }
+      const u=L.grow?Math.min(1,sm(0,.35,c))*((t*.6+L.phase)%1):(t*.35+L.phase)%1;
+      const p=L.curve.getPoint(u);pp[k*3]=p.x;pp[k*3+1]=p.y;pp[k*3+2]=p.z;
+    });
+    pulseGeo.attributes.position.needsUpdate=true;
+    r.render(scene,cam);
+  };
+})();
+
+/* =====================================================
+   03 TDAH — atenção que se espalha e mergulha (hiperfoco)
+   ===================================================== */
+const tdah=(()=>{
+  const canvas=document.getElementById('cv-tdah');
+  const r=makeRenderer(canvas);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(50,1,.1,60);cam.position.set(0,0,9);
+  const R=rng(3);const N=isMobile?2200:3600;
+  const pos=new Float32Array(N*3),off=new Float32Array(N*3),col=new Float32Array(N*3);
+  const c1=new THREE.Color('#b99cff'),c2=new THREE.Color('#f2e8dc'),c3=new THREE.Color('#ff9bd0');
+  for(let i=0;i<N;i++){
+    for(let k=0;k<3;k++){pos[i*3+k]=(R()-.5)*10;off[i*3+k]=(R()-.5)}
+    const c=R()<.7?c1.clone().lerp(c2,R()*.6):c3;col.set([c.r,c.g,c.b],i*3);
+  }
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('color',new THREE.BufferAttribute(col,3));
+  const mat=new THREE.PointsMaterial({size:.09,map:GLOW,vertexColors:true,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
+  const ptsObj=new THREE.Points(g,mat);scene.add(ptsObj);
+  // estímulos (distrações)
+  const NA=7;const stim=new THREE.Group();scene.add(stim);
+  const stimSprites=[];for(let i=0;i<NA;i++){const s=new THREE.Sprite(new THREE.SpriteMaterial({map:GLOW,color:['#ff9bd0','#b99cff','#ffd28a','#8ee6ff'][i%4],transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));s.scale.setScalar(.9);stim.add(s);stimSprites.push(s)}
+  const core=new THREE.Sprite(new THREE.SpriteMaterial({map:GLOW,color:'#ffffff',transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(core);
+  const stateEl=document.getElementById('tdah-state');
+  const MODES=[['fluxo',5],['dispersa',4.5],['hiperfoco',3.5]];const TOT=MODES.reduce((a,m)=>a+m[1],0);
+  const tgt=new THREE.Vector3();const att=[];for(let i=0;i<NA;i++)att.push(new THREE.Vector3());
+  let last='';
+  return t=>{
+    fit(r,cam,canvas);
+    const cx=isMobile?0:2.2,cy=isMobile?.2:0;
+    let m=t%TOT,mode=0;for(let i=0;i<3;i++){if(m<MODES[i][1]){mode=i;break}m-=MODES[i][1]}
+    if(MODES[mode][0]!==last){last=MODES[mode][0];stateEl.textContent=last}
+    for(let i=0;i<NA;i++){const a=i/NA*6.283+t*.3;att[i].set(cx+Math.cos(a)*(2.6+Math.sin(t+i)*.6),cy+Math.sin(a*1.3)*(isMobile?1.4:2.2),Math.sin(a*2)*1.2);
+      stimSprites[i].position.copy(att[i]);stimSprites[i].material.opacity=mode===1?.85:.15;}
+    core.position.set(cx,cy,0);core.material.opacity+=((mode===2?1:0)-core.material.opacity)*.05;core.scale.setScalar(1.6+Math.sin(t*6)*.15);
+    const k=mode===2?.06:.035;
+    for(let i=0;i<N;i++){
+      const o=i*3;
+      if(mode===0){ // lemniscata (símbolo da neurodiversidade)
+        const s=i/N*6.283+t*.35;const d=1+Math.sin(s)**2;const sc=isMobile?2.1:3.1;
+        tgt.set(cx+sc*Math.cos(s)/d+off[o]*.35,cy+sc*Math.sin(s)*Math.cos(s)/d*1.3+off[o+1]*.35,off[o+2]*.8);
+      }else if(mode===1){ // atenção dispersa entre estímulos
+        const a=att[i%NA];const w=t*2+i;tgt.set(a.x+Math.cos(w)*off[o]*1.4,a.y+Math.sin(w)*off[o+1]*1.4,a.z+off[o+2]*1.2);
+      }else{ // hiperfoco
+        const w=t*1.5+i*.37;const rr=.25+Math.abs(off[o])*.5;tgt.set(cx+Math.cos(w)*rr,cy+Math.sin(w)*rr,off[o+2]*.3);
+      }
+      pos[o]+=(tgt.x-pos[o])*k;pos[o+1]+=(tgt.y-pos[o+1])*k;pos[o+2]+=(tgt.z-pos[o+2])*k;
+    }
+    g.attributes.position.needsUpdate=true;
+    scene.rotation.y=mx*.3;scene.rotation.x=my*.2;
+    r.render(scene,cam);
+  };
+})();
+
+/* =====================================================
+   05 GERAL — mancha simétrica estilo Rorschach
+   ===================================================== */
+const geral=(()=>{
+  const cv=document.getElementById('cv-geral');const ctx=cv.getContext('2d');
+  const GW=130,GH=170;const off=document.createElement('canvas');off.width=GW*2;off.height=GH;const octx=off.getContext('2d');
+  const img=octx.createImageData(GW*2,GH);
+  const R=rng(11);
+  // ruído suave (value noise) para bordas irregulares
+  const P=new Float32Array(256*256);for(let i=0;i<P.length;i++)P[i]=R();
+  const vn=(x,y)=>{const xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi;const a=P[(xi&255)+((yi&255)<<8)],b=P[((xi+1)&255)+((yi&255)<<8)],c=P[(xi&255)+(((yi+1)&255)<<8)],d=P[((xi+1)&255)+(((yi+1)&255)<<8)];const u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf);return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v};
+  const blobs=[];
+  for(let i=0;i<7;i++)blobs.push({x:.01+R()*.08,y:.15+i*.11,r:.028+R()*.02,p:R()*6.28,s:.2+R()*.3});        // "coluna" central
+  for(let i=0;i<16;i++)blobs.push({x:.12+R()*.6,y:.1+R()*.8,r:.014+R()*.032,p:R()*6.28,s:.15+R()*.35});   // asas
+  for(let i=0;i<9;i++)blobs.push({x:.45+R()*.45,y:.08+R()*.85,r:.008+R()*.014,p:R()*6.28,s:.1+R()*.3});   // respingos
+  const grain=document.createElement('canvas');grain.width=grain.height=160;{const gc=grain.getContext('2d');const gd=gc.createImageData(160,160);for(let i=0;i<gd.data.length;i+=4){const v=R()*255;gd.data[i]=gd.data[i+1]=gd.data[i+2]=v;gd.data[i+3]=14}gc.putImageData(gd,0,0)}
+  return t=>{
+    const w=cv.clientWidth,h=cv.clientHeight,dpr=Math.min(devicePixelRatio,2);
+    if(cv.width!==Math.floor(w*dpr)||cv.height!==Math.floor(h*dpr)){cv.width=Math.floor(w*dpr);cv.height=Math.floor(h*dpr)}
+    const B=blobs.map(b=>({x:b.x+Math.sin(t*b.s+b.p)*.035,y:b.y+Math.cos(t*b.s*.8+b.p)*.03,r2:(b.r*(1+.2*Math.sin(t*b.s*1.3+b.p)))**2}));
+    const tt=t*.15;
+    for(let y=0;y<GH;y++)for(let x=0;x<GW;x++){
+      const nx=x/GW,ny=y/GH;let f=0;
+      for(const b of B){const dx=nx-b.x,dy=(ny-b.y)*.8;f+=b.r2/(dx*dx+dy*dy+1e-5)}
+      const n=vn(nx*9+tt,ny*9-tt)*.9+vn(nx*23-tt,ny*23)*.45;
+      f*=.45+.8*n;                                                   // borda rendada
+      f*=Math.min(1,(1-nx)*4)*Math.min(1,ny*6)*Math.min(1,(1-ny)*6);
+      let a=Math.max(0,Math.min(1,(f-1)*6));
+      a*=.9+.1*vn(nx*14,ny*14+3);                               // tinta acumulada
+      const A=a*245;
+      const iR=(y*GW*2+GW+x)*4,iL=(y*GW*2+GW-1-x)*4;
+      img.data[iR]=img.data[iL]=26;img.data[iR+1]=img.data[iL+1]=19;img.data[iR+2]=img.data[iL+2]=13;img.data[iR+3]=img.data[iL+3]=A;
+    }
+    octx.putImageData(img,0,0);
+    ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);
+    const bw=isMobile?w*.98:Math.min(w*.44,h*1.05),bh=bw*GH/(GW*2)*1.05;
+    const bx=isMobile?(w-bw)/2:Math.max(w*.54,w*.76-bw/2),by=isMobile?(h-bh)/2:(h-bh)/2;
+    ctx.scale(dpr,dpr);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    ctx.filter='blur(1px)';ctx.drawImage(off,bx,by,bw,bh);ctx.filter='none';
+    ctx.fillStyle=ctx.createPattern(grain,'repeat');ctx.fillRect(0,0,w,h);
+  };
+})();
+
+if(isMobile){const sv=document.getElementById('sv-esporte');sv.setAttribute('viewBox','190 20 480 540');sv.setAttribute('preserveAspectRatio','xMidYMid meet');}
+/* ---------- loop único ---------- */
+const scenes={forense,neuro,tdah,geral};
+const t0=performance.now();let drawnOnce=false;
+function loop(){
+  const t=(performance.now()-t0)/1000;
+  for(const id in scenes){ if(visible.get(id)||!drawnOnce) scenes[id](reduce?2:t); }
+  drawnOnce=true;
+  if(!reduce) requestAnimationFrame(loop);
+}
+loop();
+</script>
+</body>
+</html>
